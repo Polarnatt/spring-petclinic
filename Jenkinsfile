@@ -1,6 +1,6 @@
 pipeline {
     agent any
-//     environment {
+    environment {
 //         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "polarnatt/cicd_project"
 //         CANARY_REPLICAS = 0
