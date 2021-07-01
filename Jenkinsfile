@@ -10,14 +10,14 @@ pipeline {
             steps {
                 echo 'Running build automation'
                 sh './mvnw package'
-//                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        stage('Build Docker Image') {
+        stage('Create artifact') {
             when {
                 branch 'main'
             }
             steps {
+                archiveArtifacts artifacts: 'target/*.jar'
                 script {
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
