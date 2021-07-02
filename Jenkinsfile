@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = "polarnatt/cicd_project"
+        // prank
     }
     stages {
         stage('Build') {
