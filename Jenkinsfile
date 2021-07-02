@@ -16,27 +16,34 @@ pipeline {
                 branch 'main'
             }
             steps {
-                archiveArtifacts artifacts: 'target/*.jar'
-                script {
-                    app = docker.build(DOCKER_IMAGE_NAME)
-                    app.inside {
-                        sh 'echo Hello, World!'
-                    }
-                }
+                rtUpload (
+                    buildName: JOB_NAME,
+                    buildNumber: BUILD_NUMBER,
+                    serverId: SERVER_ID, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    spec: '''{
+                              "files": [
+                                 {
+                                  "pattern": "$WORKSPACE/Demo-Artifactory/Artifact_*",
+                                  "target": "target/*.jar",
+                                  "recursive": "false"
+                                } 
+                             ]
+                        }''' 
+                    )
             }
         }
-        stage('Push Docker Image') {
-            when {
-                branch 'main'
-            }
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
-                        app.push("${env.BUILD_NUMBER}")
-                        app.push("latest")
-                    }
-                }
-            }
-        }
+//         stage('Push Docker Image') {
+//             when {
+//                 branch 'main'
+//             }
+//             steps {
+//                 script {
+//                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+//                         app.push("${env.BUILD_NUMBER}")
+//                         app.push("latest")
+//                     }
+//                 }
+//             }
+//         }
     }    
 }
