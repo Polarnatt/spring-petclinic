@@ -12,9 +12,6 @@ pipeline {
             }
         }
         stage('Create artifact') {
-            when {
-                branch 'main'
-            }
             steps {
                 rtUpload (
                     buildName: JOB_NAME,
