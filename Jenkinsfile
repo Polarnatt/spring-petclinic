@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = "polarnatt/cicd_project"
-//         CANARY_REPLICAS = 0
     }
     stages {
         stage('Build') {
