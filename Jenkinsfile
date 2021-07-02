@@ -29,6 +29,56 @@ pipeline {
                     )
             }
         }
+        stage ('Publish build info') {
+            steps {
+                rtPublishBuildInfo (
+                    buildName: JOB_NAME,
+                    buildNumber: BUILD_NUMBER,
+                    serverId: SERVER_ID
+                )
+
+                rtPublishBuildInfo (
+                    buildName: JOB_NAME,
+                    buildNumber: BUILD_NUMBER,
+                    serverId: SERVER_ID
+                )
+            }
+        }
+         stage ('Add interactive promotion') {
+            steps {
+                rtAddInteractivePromotion (
+                    //Mandatory parameter
+                    serverId: SERVER_ID,
+
+                    //Optional parameters
+                    targetRepo: 'result/',
+                    displayName: 'Promote me please',
+                    buildName: JOB_NAME,
+                    buildNumber: BUILD_NUMBER,
+                    comment: 'this is the promotion comment',
+                    sourceRepo: 'result/',
+                    status: 'Released',
+                    includeDependencies: true,
+                    failFast: true,
+                    copy: true
+                )
+
+                rtAddInteractivePromotion (
+                    serverId: SERVER_ID,
+                    buildName: JOB_NAME,
+                    buildNumber: BUILD_NUMBER
+                )
+            }
+         }
+         stage ('Removing files') {
+            steps {
+                sh 'rm -rf $WORKSPACE/*'
+            }
+        }
+         
+        
+  }
+}
 //         stage('Push Docker Image') {
 //             when {
 //                 branch 'main'
@@ -42,5 +92,5 @@ pipeline {
 //                 }
 //             }
 //         }
-    }    
-}
+  //  }    
+//}
