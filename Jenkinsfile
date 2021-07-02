@@ -21,7 +21,7 @@ pipeline {
                               "files": [
                                  {
                                   "pattern": "$WORKSPACE/Demo-Artifactory/Artifact_*",
-                                  "target": "target/*.jar",
+                                  "target": "test/",
                                   "recursive": "false"
                                 } 
                              ]
