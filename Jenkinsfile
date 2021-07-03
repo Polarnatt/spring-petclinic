@@ -17,7 +17,7 @@ pipeline {
                     [
                         artifactId: 'spring-petclinic',
                         classifier: '', 
-                        file: 'target/petclinic-2.4.5.jar', 
+                        file: 'target/spring-petclinic-2.4.5.jar', 
                         type: 'jar'
                     ]
                 ], 
