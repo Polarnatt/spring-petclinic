@@ -21,7 +21,7 @@ pipeline {
                         type: 'jar'
                     ]
                 ], 
-                credentialsId: 'nexus_pass', 
+                credentialsId: 'nexus_password', 
                 groupId: 'org.springframework.samples', 
                 nexusUrl: '35.177.5.64:8081', 
                 nexusVersion: 'nexus3', 
