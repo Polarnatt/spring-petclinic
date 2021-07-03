@@ -11,24 +11,25 @@ pipeline {
                 sh './mvnw package'
             }
         }
-//         stage('Creating and pushing artifact to Nexus') {
-//             steps {
-//                 nexusArtifactUploader artifacts: [
-//                     [
-//                         artifactId: 'spring-petclinic',
-//                         classifier: '', 
-//                         file: 'target/petclinic-2.4.5.jar', 
-//                         type: 'jar'
-//                     ]
-//                 ], 
-//                 credentialsId: 'nexus_pass', 
-//                 groupId: 'org.springframework.samples', 
-//                 nexusUrl: '35.177.5.64:8081', 
-//                 nexusVersion: 'nexus3', 
-//                 protocol: 'http',
-//                 version: '2.4.5'
-//             }
-//         }
+        stage('Creating and pushing artifact to Nexus') {
+            steps {
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'spring-petclinic',
+                        classifier: '', 
+                        file: 'target/petclinic-2.4.5.jar', 
+                        type: 'jar'
+                    ]
+                ], 
+                credentialsId: 'nexus_pass', 
+                groupId: 'org.springframework.samples', 
+                nexusUrl: '35.177.5.64:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http',
+                repository: 'http://35.177.5.64:8081/repository/sample/',
+                version: '2.4.5'
+            }
+        }
     }
 }
 //         stage('Push Docker Image') {
