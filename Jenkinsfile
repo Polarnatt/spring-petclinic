@@ -27,7 +27,7 @@ pipeline {
                 nexusVersion: 'nexus3', 
                 protocol: 'http',
                 repository: 'sample',
-                version: '4.0.0'
+                //version: '4.0.0'
             }
         }
     }
