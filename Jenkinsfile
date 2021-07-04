@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build automation'
-                sh './mvnw package'
+                sh 'mvn clean package'
             }
         }
         stage('Creating and pushing artifact to Nexus') {
