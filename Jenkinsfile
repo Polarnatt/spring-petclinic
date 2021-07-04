@@ -1,9 +1,5 @@
 pipeline {
     agent any
-//     environment {
-//         DOCKER_IMAGE_NAME = "polarnatt/cicd_project"
-//         // prank
-//     }
     tools {
         maven 'M3'
     }
