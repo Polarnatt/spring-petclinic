@@ -29,7 +29,7 @@ pipeline {
                 nexusUrl: '172.31.21.173:8081', 
                 nexusVersion: 'nexus2', 
                 protocol: 'http', 
-                repository: '35.176.133.178:8081/repository/project-release/', 
+                repository: '35.176.133.178:8081/repository/project-release', 
                 version: '2.4.5'
             }
         }
