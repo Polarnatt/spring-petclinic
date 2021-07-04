@@ -29,7 +29,7 @@ pipeline {
                 nexusUrl: '52.56.186.40:8081', 
                 nexusVersion: 'nexus2', 
                 protocol: 'http',
-                repository: 'http://52.56.186.40:8081/repository/test',
+                repository: 'test',
                 version: '2.4.5'
             }
         }
