@@ -14,7 +14,7 @@ pipeline {
                 sh './mvnw clean package'
             }
         }
-        stage('Creating and pushing artifact to Nexus') {
+        stage('Push artifact to Nexus') {
             steps {
                 nexusArtifactUploader artifacts: [
                     [
