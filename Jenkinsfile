@@ -26,8 +26,7 @@ pipeline {
                 nexusUrl: '18.133.245.181:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http',
-                repository: 'sample',
-                version: '2.4.5'
+                repository: 'sample'
             }
         }
     }
