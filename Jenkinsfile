@@ -26,8 +26,8 @@ pipeline {
                 ], 
                 credentialsId: 'nexus_password', 
                 groupId: 'org.springframework.samples', 
-                nexusUrl: '35.176.133.178:8081', 
-                nexusVersion: 'nexus2', 
+                nexusUrl: '172.31.21.173:8081', 
+                nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'project-release', 
                 version: '2.4.5'
