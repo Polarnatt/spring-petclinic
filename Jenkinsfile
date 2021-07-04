@@ -23,11 +23,11 @@ pipeline {
                 ], 
                 credentialsId: 'nexus_password', 
                 groupId: 'org.springframework.samples', 
-                nexusUrl: '18.133.245.181:8081', 
+                nexusUrl: '52.56.186.40:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http',
-                repository: 'sample',
-                version: '1.0.0'
+                repository: 'test',
+                version: '2.4.5'
             }
         }
     }
