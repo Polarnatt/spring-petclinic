@@ -31,6 +31,7 @@ pipeline {
                 protocol: 'http', 
                 repository: 'http://35.176.133.178:8081/repository/project-release/', 
                 version: '2.4.5'
+            }
         }
     }
 }
