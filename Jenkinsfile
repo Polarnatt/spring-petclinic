@@ -18,20 +18,19 @@ pipeline {
             steps {
                 nexusArtifactUploader artifacts: [
                     [
-                        artifactId: 'spring-petclinic',
+                        artifactId: 'spring-petclinic', 
                         classifier: '', 
-                        file: 'target/spring-petclinic-2.4.5.jar', 
+                        file: 'target/petclinic-2.4.5.jar', 
                         type: 'jar'
                     ]
                 ], 
                 credentialsId: 'nexus_password', 
                 groupId: 'org.springframework.samples', 
-                nexusUrl: '52.56.186.40:8081', 
+                nexusUrl: '172.31.21.173:8081', 
                 nexusVersion: 'nexus2', 
-                protocol: 'http',
-                repository: '52.56.186.40:8081/repository/test',
+                protocol: 'http', 
+                repository: 'http://35.176.133.178:8081/repository/project-release/', 
                 version: '2.4.5'
-            }
         }
     }
 }
