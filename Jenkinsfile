@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    // test
     tools {
         maven 'M3'
     }
