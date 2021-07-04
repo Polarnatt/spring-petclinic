@@ -1,8 +1,11 @@
 pipeline {
     agent any
-    environment {
-        DOCKER_IMAGE_NAME = "polarnatt/cicd_project"
-        // prank
+//     environment {
+//         DOCKER_IMAGE_NAME = "polarnatt/cicd_project"
+//         // prank
+//     }
+    tools {
+        maven 'M3'
     }
     stages {
         stage('Build') {
@@ -17,7 +20,7 @@ pipeline {
                     [
                         artifactId: 'spring-petclinic',
                         classifier: '', 
-                        file: 'target/spring-petclinic-2.4.5.jar', 
+                        file: 'target/spring-petclinic-1.0.0.jar', 
                         type: 'jar'
                     ]
                 ], 
@@ -27,7 +30,7 @@ pipeline {
                 nexusVersion: 'nexus3', 
                 protocol: 'http',
                 repository: 'test',
-                version: '2.4.5'
+                version: '1.0.0'
             }
         }
     }
