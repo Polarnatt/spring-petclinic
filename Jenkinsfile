@@ -26,7 +26,7 @@ pipeline {
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'project-release', 
-                version: '2.4.5'
+                version: '${BUILD_NUMBER}'
             }
         }
     }
