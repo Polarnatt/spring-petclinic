@@ -3,7 +3,7 @@ pipeline {
     tools {
         maven 'M3'
     }
-    //
+    // test
     stages {
         stage('Build') {
             steps {
