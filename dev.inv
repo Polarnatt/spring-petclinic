@@ -1,2 +1,2 @@
 [ci_deploy]
-172.31.21.173 ansible_user=cloud_user
+107.23.68.122 ansible_user=ec2-user
