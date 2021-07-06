@@ -1,2 +1,2 @@
 [ci_deploy]
-35.176.251.92 ansible_user=cloud_user
+172.31.21.173 ansible_user=cloud_user
