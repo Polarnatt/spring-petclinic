@@ -8,8 +8,8 @@
         state: "latest"
     - name: Download jar
       ansible.builtin.get_url:
-        url: http://172.31.21.173:8081/repository/project-release/org/springframework/samples/spring-petclinic/4-2.4.5/spring-petclinic-4-2.4.5.jar
-        dest: /home/cloud_user/
+        url: http://172.31.19.118:8081/repository/project-release/org/springframework/samples/spring-petclinic/9-2.4.5/spring-petclinic-9-2.4.5.jar
+        dest: /home/ec2-user/
     - name: Deploy site
       ansible.builtin.shell:
-        cmd: java jar /home/cloud_user/spring-petclinic-4-2.4.5.jar --server.port=8081
+        cmd: java jar /home/ec2-user/spring-petclinic-4-2.4.5.jar --server.port=8081
