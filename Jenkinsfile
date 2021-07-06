@@ -30,11 +30,11 @@ pipeline {
                 version: '${BUILD_NUMBER}-2.4.5'
             }
         }
-//         stage('Deploying app to CI env'){
-//             steps{
-//                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev.inv', playbook: 'deploy.yml'
-//             }
-//         }
+        stage('Deploying app to CI env'){
+            steps{
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev.inv', playbook: 'deploy.yml'
+            }
+        }
     }
 }
 //         stage('Push Docker Image') {
