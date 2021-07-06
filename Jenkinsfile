@@ -32,7 +32,7 @@ pipeline {
 //         }
         stage('Deploying app to CI env'){
             steps{
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev.inv', playbook: 'deploy.yml'
+                ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev.inv', playbook: 'deploy.yml'
             }
         }
     }
