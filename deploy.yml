@@ -15,4 +15,4 @@
         dest: /home/ec2-user/
     - name: Deploy site
       ansible.builtin.shell:
-        cmd: java -jar spring* --server.port=8081
+        cmd: java -jar spring* --server.port=8081 &
