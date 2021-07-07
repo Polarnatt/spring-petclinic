@@ -18,5 +18,5 @@
         cmd: pkill -f bash
         cmd: pkill -f java
         cmd: echo '#!/bin/bash' > script.sh
-        cmd: echo 'java jar spring-petclinic-{{ var1 }}.jar --server.port=8081' >> script.sh
+        cmd: echo 'java jar spring-petclinic-${var1}.jar --server.port=8081' >> script.sh
         cmd: bash script.sh &
