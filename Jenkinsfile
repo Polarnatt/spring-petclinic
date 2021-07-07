@@ -52,6 +52,11 @@ pipeline {
                         var1: env.NUMBER,
                     ]
                     }
+                input('Do you to proceed to close the website?'){
+                    steps{
+                        sh "exit 0"
+                    }
+                }
             }
         }
     }
