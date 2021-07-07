@@ -16,4 +16,4 @@
         dest: /home/ec2-user/
     - name: Deploy site
       ansible.builtin.shell:
-        cmd: echo java -jar spring-petclinic-{{ var1 }}.jar --server.port=8081 &
+        cmd: java -jar spring-petclinic-{{ var1 }}.jar --server.port=8081 &
