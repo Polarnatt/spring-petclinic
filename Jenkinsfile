@@ -33,7 +33,14 @@ pipeline {
         stage('Deploying app to CI env'){
             steps{
                 timeout(time: 40, unit: 'SECONDS'){
-                    ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev.inv', playbook: 'deploy.yml'
+                    ansiblePlaybook credentialsId: 'private-key', 
+                    disableHostKeyChecking: true, 
+                    installation: 'ansible2', 
+                    inventory: 'dev.inv', 
+                    playbook: 'deploy.yml',
+                    extraVars: [
+                        var1: env.BUILD_NUMBER,
+                    ]
                     }
             }
         }
