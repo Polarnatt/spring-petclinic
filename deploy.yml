@@ -6,10 +6,6 @@
       yum:
         name: java-1.8.0-openjdk
         state: "latest"
-    - name: Remove junk
-      ansible.builtin.shell:
-        cmd: rm -rf spring*
-        cmd: pkill -f java
     - name: Download jar
       ansible.builtin.get_url:
         url: http://172.31.19.118:8081/repository/project-release/org/springframework/samples/spring-petclinic/{{ var1 }}/spring-petclinic-{{ var1 }}.jar
