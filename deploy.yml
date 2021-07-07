@@ -12,6 +12,8 @@
         dest: /home/ec2-user/
     - name: Deploy site
       ansible.builtin.shell:
+        cmd: pkill -f bash
+        cmd: pkill -f java
         cmd: echo '#!/bin/bash' > script.sh
         cmd: echo 'java jar spring-petclinic-{{ var1 }}.jar --server.port=8081'
         cmd: bash script.sh &
