@@ -30,6 +30,16 @@ pipeline {
                 version: '${BUILD_NUMBER}'
             }
         }
+        stage('Choose artifact version'){
+            steps{
+                script{
+                    env.NUMBER = input message: 'Please enter the number of artifact version, that you want to build',
+                                 parameters: [string(defaultValue: '',
+                                              description: '',
+                                              name: 'Number')]
+                }
+            }
+        }
         stage('Deploying app to CI env'){
             steps{
                 timeout(time: 40, unit: 'SECONDS'){
@@ -39,7 +49,7 @@ pipeline {
                     inventory: 'dev.inv', 
                     playbook: 'deploy.yml',
                     extraVars: [
-                        var1: env.BUILD_NUMBER,
+                        var1: env.NUMBER,
                     ]
                     }
             }
