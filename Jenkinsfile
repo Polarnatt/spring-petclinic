@@ -27,7 +27,7 @@ pipeline {
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'project-release', 
-                version: '${BUILD_NUMBER}-2.4.5'
+                version: '${BUILD_NUMBER}'
             }
         }
         stage('Deploying app to CI env'){
@@ -46,18 +46,3 @@ pipeline {
         }
     }
 }
-//         stage('Push Docker Image') {
-//             when {
-//                 branch 'main'
-//             }
-//             steps {
-//                 script {
-//                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
-//                         app.push("${env.BUILD_NUMBER}")
-//                         app.push("latest")
-//                     }
-//                 }
-//             }
-//         }
-  //  }    
-//}
