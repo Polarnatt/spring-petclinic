@@ -3,7 +3,6 @@ pipeline {
     tools {
         maven 'M3'
     }
-    // test
     stages {
         stage('Build') {
             steps {
@@ -50,11 +49,7 @@ pipeline {
                     extraVars: [
                         var1: env.NUMBER,
                     ]
-                input('Do you want to proceed to close the website?'){
-                    steps{
-                        sh "exit 0"
-                    }
-                }
+               
             }
         }
     }
