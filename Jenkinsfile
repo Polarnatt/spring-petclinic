@@ -42,7 +42,6 @@ pipeline {
         }
         stage('Deploying app to CI env'){
             steps{
-                timeout(time: 40, unit: 'SECONDS'){
                     ansiblePlaybook credentialsId: 'private-key', 
                     disableHostKeyChecking: true, 
                     installation: 'ansible2', 
@@ -51,8 +50,7 @@ pipeline {
                     extraVars: [
                         var1: env.NUMBER,
                     ]
-                    }
-                input('Do you to proceed to close the website?'){
+                input('Do you want to proceed to close the website?'){
                     steps{
                         sh "exit 0"
                     }
