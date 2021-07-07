@@ -16,7 +16,6 @@
     - name: Deploy site
       ansible.builtin.shell:
         cmd: pkill -f java
-        cmd: rm -rf script.sh
         cmd: echo '#!/bin/bash' > script.sh
         cmd: echo java jar spring-petclinic-{{ var1 }}.jar --server.port=8081 >> script.sh
         cmd: bash script.sh &
