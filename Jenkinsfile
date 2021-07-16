@@ -6,11 +6,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-//                 echo 'Running build automation'
-//                 sh './mvnw clean package'
-                script {
-                    docker.build polarnatt/cicd_project + ":$BUILD_NUMBER"
-                }
+                echo 'Running build automation'
+                sh './mvnw clean package'
+//                 script {
+//                     docker.build polarnatt/cicd_project + ":$BUILD_NUMBER"
+//                 }
             }
         }
         stage('Push artifact to Nexus') {
