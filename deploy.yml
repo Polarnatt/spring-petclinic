@@ -2,17 +2,37 @@
 - hosts: ci_deploy
   become: True
   tasks:
-    - name: Install Java
+     - name: Update all packages
       yum:
-        name: java-1.8.0-openjdk
-        state: "latest"
-    - name: Delete junk
-      ansible.builtin.shell:
-        cmd: rm -rf spring*
-    - name: Download jar
-      ansible.builtin.get_url:
-        url: http://172.31.19.118:8081/repository/project-release/org/springframework/samples/spring-petclinic/{{ var1 }}/spring-petclinic-{{ var1 }}.jar
-        dest: /home/ec2-user/
-    - name: Deploy site
-      ansible.builtin.shell:
-        cmd: java -jar spring* --server.port=8081 &
+        name: '*'
+        state: latest
+        update_only: yes
+
+#     - name: Ensure a list of yum packages are installed
+#       yum:
+#         name: "{{ packages }}"
+#         state: latest
+#         update_cache: yes
+#       vars:
+#         packages:
+#         - yum-utils
+#         - device-mapper-persistent-data
+#         - amazon-linux-extras
+#         - lvm2
+
+#     - name: Add extras repository
+#       shell: yum-config-manager --enable extras
+
+#     - name: Install docker-ce viz amazon-linux-extras packages
+#       shell: "amazon-linux-extras install docker -y"
+
+#     - name: Enable Docker CE service at startup
+#       service:
+#         name: docker
+#         state: started
+#         enabled: yes
+    - name: Delete old images
+      shell 'docker ps -f name=petclinic -q | xargs --no-run-if-empty docker container stop'
+      shell 'docker container ls -a -fname=petclinic -q | xargs -r docker container rm'
+    - name: Pull and run image
+      shell: docker run -d 8081:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8083/spring-petclinic:{{ var1 }}
