@@ -66,33 +66,33 @@ pipeline {
     }
     
     stages {
-//         stage('Building image'){
-//             steps{
-//                 script{
-//                     dockerImage = docker.build imageName
-//                 }
-//             }
-//         }
-//         stage('Uploading to Nexus'){
-//             steps{
-//                 script{
-// //                     sh "docker login -u admin -p 20012224296035 172.31.21.173:8083"
-//                     docker.withRegistry('http://'+registry, registryCredentials){
-//                         dockerImage.push('$BUILD_NUMBER')  
-//                     }
-//                 }
-//             }
-//         }
-//         stage('Choose artifact version'){
-//             steps{
-//                 script{
-//                     env.NUMBER = input message: 'Please enter the number of artifact version, that you want to build',
-//                                  parameters: [string(defaultValue: '',
-//                                               description: '',
-//                                               name: 'Number')]
-//                 }
-//             }
-//         }
+        stage('Building image'){
+            steps{
+                script{
+                    dockerImage = docker.build imageName
+                }
+            }
+        }
+        stage('Uploading to Nexus'){
+            steps{
+                script{
+//                     sh "docker login -u admin -p 20012224296035 172.31.21.173:8083"
+                    docker.withRegistry('http://'+registry, registryCredentials){
+                        dockerImage.push('$BUILD_NUMBER')  
+                    }
+                }
+            }
+        }
+        stage('Choose artifact version'){
+            steps{
+                script{
+                    env.NUMBER = input message: 'Please enter the number of artifact version, that you want to build',
+                                 parameters: [string(defaultValue: '',
+                                              description: '',
+                                              name: 'Number')]
+                }
+            }
+        }
         stage('Deploying app to CI env'){
             steps{
                     ansiblePlaybook credentialsId: 'private-key', 
@@ -100,10 +100,10 @@ pipeline {
                     installation: 'ansible2', 
                     inventory: 'dev.inv', 
                     playbook: 'deploy.yml',
-                    extraVars: [
-//                         var1: env.NUMBER,
-                        var1: 22,
-                    ]
+//                     extraVars: [
+// //                         var1: env.NUMBER,
+//                         var1: 22,
+//                     ]
                
             }
         }
