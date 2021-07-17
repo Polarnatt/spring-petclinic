@@ -73,6 +73,6 @@ pipeline {
                 }
             }
         }
-        stage('Uploading to Nexus')
+//         stage('Uploading to Nexus')
     }
 }
