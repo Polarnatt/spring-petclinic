@@ -1,6 +1,7 @@
 ---
 - hosts: ci_deploy
   tasks:
+  # remember to configure login in nexus using template: docker login -u ____ -p ____ oleksandrsvystun3c.mylabserver.com:8083
   - name: Delete old container
     shell: sudo docker rm petclinic -f
     
