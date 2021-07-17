@@ -61,7 +61,7 @@ pipeline {
     environment {
         imageName = "spring-petclinic:$BUILD_NUMBER"
         registryCredentials = "nexus_creds"
-        registry = "192.168.1.201:8083"
+        registry = "34.212.136.170:8083"
         dockerImage = ""
     }
     
