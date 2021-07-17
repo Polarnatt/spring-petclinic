@@ -35,4 +35,4 @@
     shell: docker rm petclinic -f 
     
   - name: Pull and run image
-    shell: docker run -d 8081:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8083/spring-petclinic:{{ var1 }}
+    shell: docker run -d 8081:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8083/spring-petclinic:22
