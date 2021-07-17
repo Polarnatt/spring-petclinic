@@ -34,7 +34,8 @@
 #         state: started
 #         enabled: yes
   - name: Delete old container
-    shell: sudo docker rm petclinic -f 
+    shell: sudo docker rm petclinic -f
+    shell: whoami
     
   - name: Pull and run image
     shell: sudo docker run -d 8080:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8083/spring-petclinic:22
