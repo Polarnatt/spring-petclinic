@@ -73,6 +73,14 @@ pipeline {
                 }
             }
         }
-//         stage('Uploading to Nexus')
+        stage('Uploading to Nexus'){
+            steps{
+                script{
+                    docker.withRegistry('http://'+registry, registryCredentials){
+                        dockerImage.push('$BUILD_NUMBER')  
+                    }
+                }
+            }
+        }
     }
 }
