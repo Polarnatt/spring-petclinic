@@ -31,9 +31,8 @@
 #         name: docker
 #         state: started
 #         enabled: yes
-  - name: Delete old images
-    shell 'docker ps -f name=petclinic -q | xargs --no-run-if-empty docker container stop'
-    shell 'docker container ls -a -fname=petclinic -q | xargs -r docker container rm'
+  - name: Delete old container
+    shell: docker rm petclinic -f 
     
   - name: Pull and run image
     shell: docker run -d 8081:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8083/spring-petclinic:{{ var1 }}
