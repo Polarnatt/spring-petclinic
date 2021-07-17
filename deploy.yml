@@ -37,4 +37,4 @@
     shell: sudo docker rm petclinic -f 
     
   - name: Pull and run image
-    shell: sudo docker run -d 8081:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8083/spring-petclinic:22
+    shell: sudo docker run -d 8080:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8083/spring-petclinic:22
