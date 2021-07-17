@@ -1,32 +1,6 @@
 ---
 - hosts: ci_deploy
-#   become: True
-#   remote_user: ec2-user
-#   become_user: root
   tasks:
-#     - name: Ensure a list of yum packages are installed
-#       yum:
-#         name: "{{ packages }}"
-#         state: latest
-#         update_cache: yes
-#       vars:
-#         packages:
-#         - yum-utils
-#         - device-mapper-persistent-data
-#         - amazon-linux-extras
-#         - lvm2
-
-#     - name: Add extras repository
-#       shell: yum-config-manager --enable extras
-
-#     - name: Install docker-ce viz amazon-linux-extras packages
-#       shell: "amazon-linux-extras install docker -y"
-
-#     - name: Enable Docker CE service at startup
-#       service:
-#         name: docker
-#         state: started
-#         enabled: yes
   - name: Delete old container
     shell: sudo docker rm petclinic -f
     
