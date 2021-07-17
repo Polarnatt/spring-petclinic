@@ -59,19 +59,20 @@ pipeline {
     agent any
     
     environment {
-        imageName = "spring-petclinic"
+        imageName = "spring-petclinic:$BUILD_NUMBER"
         registryCredentials = "nexus_cred"
         registry = "35.178.121.139:8083"
         dockerImage = ""
     }
     
     stages {
-        stage('BUilding image'){
+        stage('Building image'){
             steps{
                 script{
                     dockerImage = docker.build imageName
                 }
             }
         }
+        stage('Uploading to Nexus')
     }
 }
