@@ -65,24 +65,24 @@ pipeline {
         dockerImage = ""
     }
     
-    stages {
-        stage('Building image'){
-            steps{
-                script{
-                    dockerImage = docker.build imageName
-                }
-            }
-        }
-        stage('Uploading to Nexus'){
-            steps{
-                script{
-//                     sh "docker login -u admin -p 20012224296035 172.31.21.173:8083"
-                    docker.withRegistry('http://'+registry, registryCredentials){
-                        dockerImage.push('$BUILD_NUMBER')  
-                    }
-                }
-            }
-        }
+//     stages {
+//         stage('Building image'){
+//             steps{
+//                 script{
+//                     dockerImage = docker.build imageName
+//                 }
+//             }
+//         }
+//         stage('Uploading to Nexus'){
+//             steps{
+//                 script{
+// //                     sh "docker login -u admin -p 20012224296035 172.31.21.173:8083"
+//                     docker.withRegistry('http://'+registry, registryCredentials){
+//                         dockerImage.push('$BUILD_NUMBER')  
+//                     }
+//                 }
+//             }
+//         }
         stage('Choose artifact version'){
             steps{
                 script{
