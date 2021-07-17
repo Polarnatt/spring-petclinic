@@ -1,9 +1,9 @@
 ---
 - hosts: ci_deploy
   tasks:
-  # remember to configure login in nexus using template: docker login -u ____ -p ____ oleksandrsvystun3c.mylabserver.com:8083
+  # remember to configure login in nexus using template: docker login -u ____ -p ____ oleksandrsvystun3c.mylabserver.com:8084
   - name: Delete old container
     shell: sudo docker rm petclinic -f
     
   - name: Pull and run image
-    shell: sudo docker run -d -p 8081:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8083/spring-petclinic:{{ var1 }}
+    shell: sudo docker run -d -p 8081:8080 --name petclinic oleksandrsvystun3c.mylabserver.com:8084/spring-petclinic:{{ var1 }}
