@@ -61,7 +61,7 @@ pipeline {
     environment {
         imageName = "spring-petclinic:$BUILD_NUMBER"
         registryCredentials = "nexus_cred"
-        registry = "172.31.21.173:8083"
+        registry = "192.168.1.208:8083"
         dockerImage = ""
     }
     
@@ -76,7 +76,7 @@ pipeline {
         stage('Uploading to Nexus'){
             steps{
                 script{
-                    sh "docker login -u admin -p 20012224296035 172.31.21.173:8083"
+//                     sh "docker login -u admin -p 20012224296035 172.31.21.173:8083"
                     docker.withRegistry('http://'+registry, registryCredentials){
                         dockerImage.push('$BUILD_NUMBER')  
                     }
