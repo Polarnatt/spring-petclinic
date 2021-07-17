@@ -100,10 +100,9 @@ pipeline {
                     installation: 'ansible2', 
                     inventory: 'dev.inv', 
                     playbook: 'deploy.yml',
-//                     extraVars: [
-// //                         var1: env.NUMBER,
-//                         var1: 22,
-//                     ]
+                    extraVars: [
+                        var1: env.NUMBER,
+                    ]
                
             }
         }
