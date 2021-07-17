@@ -83,5 +83,28 @@ pipeline {
                 }
             }
         }
+        stage('Choose artifact version'){
+            steps{
+                script{
+                    env.NUMBER = input message: 'Please enter the number of artifact version, that you want to build',
+                                 parameters: [string(defaultValue: '',
+                                              description: '',
+                                              name: 'Number')]
+                }
+            }
+        }
+        stage('Deploying app to CI env'){
+            steps{
+                    ansiblePlaybook credentialsId: 'private-key', 
+                    disableHostKeyChecking: true, 
+                    installation: 'ansible2', 
+                    inventory: 'dev.inv', 
+                    playbook: 'deploy.yml',
+                    extraVars: [
+                        var1: env.NUMBER,
+                    ]
+               
+            }
+        }
     }
 }
