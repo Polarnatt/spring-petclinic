@@ -61,7 +61,7 @@ pipeline {
     environment {
         imageName = "spring-petclinic:$BUILD_NUMBER"
         registryCredentials = "nexus_creds"
-        registry = "34.212.136.170:8083"
+        registry = "oleksandrsvystun3c.mylabserver.com:8083"
         dockerImage = ""
     }
     
@@ -78,7 +78,7 @@ pipeline {
                 script{
 //                     sh "docker login -u admin -p 20012224296035 172.31.21.173:8083"
                     docker.withRegistry('http://'+registry, registryCredentials){
-                        dockerImage.push('$BUILD_NUMBER')  
+//                         dockerImage.push('$BUILD_NUMBER')  
                     }
                 }
             }
