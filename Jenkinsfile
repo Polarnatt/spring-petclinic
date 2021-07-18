@@ -29,7 +29,6 @@
 //                 version: '${BUILD_NUMBER}'
 //             }
 //         }
-
 //         stage('Choose artifact version'){
 //             steps{
 //                 script{
