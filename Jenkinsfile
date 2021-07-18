@@ -58,14 +58,14 @@
 pipeline {
     agent any
     
-//     environment {
-//         imageName = "spring-petclinic:$BUILD_NUMBER"
-//         registryCredentials = "nexus_creds"
-//         registry = "oleksandrsvystun3c.mylabserver.com:8083"
-//         dockerImage = ""
-//     }
+    environment {
+        imageName = "spring-petclinic:$BUILD_NUMBER"
+        registryCredentials = "nexus_creds"
+        registry = "oleksandrsvystun3c.mylabserver.com:8083"
+        dockerImage = ""
+    }
     
-//     stages {
+    stages {
 //         stage('Building image'){
 //             steps{
 //                 script{
