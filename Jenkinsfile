@@ -58,40 +58,40 @@
 pipeline {
     agent any
     
-    environment {
-        imageName = "spring-petclinic:$BUILD_NUMBER"
-        registryCredentials = "nexus_creds"
-        registry = "oleksandrsvystun3c.mylabserver.com:8083"
-        dockerImage = ""
-    }
+//     environment {
+//         imageName = "spring-petclinic:$BUILD_NUMBER"
+//         registryCredentials = "nexus_creds"
+//         registry = "oleksandrsvystun3c.mylabserver.com:8083"
+//         dockerImage = ""
+//     }
     
-    stages {
-        stage('Building image'){
-            steps{
-                script{
-                    dockerImage = docker.build imageName
-                }
-            }
-        }
-        stage('Uploading to Nexus'){
-            steps{
-                script{
-                    docker.withRegistry('http://'+registry, registryCredentials){
-                        dockerImage.push('$BUILD_NUMBER')  
-                    }
-                }
-            }
-        }
-        stage('Choose artifact version'){
-            steps{
-                script{
-                    env.NUMBER = input message: 'Please enter the number of artifact version, that you want to build',
-                                 parameters: [string(defaultValue: '',
-                                              description: '',
-                                              name: 'Number')]
-                }
-            }
-        }
+//     stages {
+//         stage('Building image'){
+//             steps{
+//                 script{
+//                     dockerImage = docker.build imageName
+//                 }
+//             }
+//         }
+//         stage('Uploading to Nexus'){
+//             steps{
+//                 script{
+//                     docker.withRegistry('http://'+registry, registryCredentials){
+//                         dockerImage.push('$BUILD_NUMBER')  
+//                     }
+//                 }
+//             }
+//         }
+//         stage('Choose artifact version'){
+//             steps{
+//                 script{
+//                     env.NUMBER = input message: 'Please enter the number of artifact version, that you want to build',
+//                                  parameters: [string(defaultValue: '',
+//                                               description: '',
+//                                               name: 'Number')]
+//                 }
+//             }
+//         }
         stage('Deploying app to CI env'){
             steps{
                     ansiblePlaybook credentialsId: 'private-key', 
