@@ -14,6 +14,7 @@
 //             steps {
 //                 nexusArtifactUploader artifacts: [
 //                     [
+
 //                         artifactId: 'spring-petclinic', 
 //                         classifier: '', 
 //                         file: 'target/spring-petclinic-2.4.5.jar', 
