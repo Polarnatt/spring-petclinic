@@ -58,30 +58,30 @@
 pipeline {
     agent any
     
-//     environment {
-//         imageName = "spring-petclinic:$BUILD_NUMBER"
-//         registryCredentials = "nexus_creds"
-//         registry = "oleksandrsvystun3c.mylabserver.com:8083"
-//         dockerImage = ""
-//     }
+    environment {
+        imageName = "spring-petclinic:$BUILD_NUMBER"
+        registryCredentials = "nexus_creds"
+        registry = "oleksandrsvystun3c.mylabserver.com:8083"
+        dockerImage = ""
+    }
     
     stages {
-//         stage('Building image'){
-//             steps{
-//                 script{
-//                     dockerImage = docker.build imageName
-//                 }
-//             }
-//         }
-//         stage('Uploading to Nexus'){
-//             steps{
-//                 script{
-//                     docker.withRegistry('http://'+registry, registryCredentials){
-//                         dockerImage.push('$BUILD_NUMBER')  
-//                     }
-//                 }
-//             }
-//         }
+        stage('Building image'){
+            steps{
+                script{
+                    dockerImage = docker.build imageName
+                }
+            }
+        }
+        stage('Uploading to Nexus'){
+            steps{
+                script{
+                    docker.withRegistry('http://'+registry, registryCredentials){
+                        dockerImage.push('$BUILD_NUMBER')  
+                    }
+                }
+            }
+        }
         
         stage('Choose artifact version'){
             steps{
